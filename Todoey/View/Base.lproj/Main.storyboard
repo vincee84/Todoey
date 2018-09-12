@@ -36,7 +36,7 @@
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="MFW-R9-Epi">
                             <color key="tintColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <connections>
-                                <action selector="addButtonPressed:" destination="PzP-kD-nnH" id="aTk-hx-kD6"/>
+                                <action selector="addButtonPressed:" destination="PzP-kD-nnH" id="Wpc-j6-gT0"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
