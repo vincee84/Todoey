@@ -13,8 +13,9 @@
 		FA4B112821448C850094ED69 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FA4B112621448C850094ED69 /* Main.storyboard */; };
 		FA4B112A21448C860094ED69 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FA4B112921448C860094ED69 /* Assets.xcassets */; };
 		FA4B112D21448C860094ED69 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FA4B112B21448C860094ED69 /* LaunchScreen.storyboard */; };
-		FA82EF16214699CD00694C51 /* DataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = FA82EF14214699CD00694C51 /* DataModel.xcdatamodeld */; };
 		FA82EF3921479E4B00694C51 /* CategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA82EF3821479E4B00694C51 /* CategoryViewController.swift */; };
+		FAC78DD9214A455C0066657D /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC78DD8214A455C0066657D /* Item.swift */; };
+		FAC78DDB214A459F0066657D /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC78DDA214A459F0066657D /* Category.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,8 +29,9 @@
 		FA4B112921448C860094ED69 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FA4B112C21448C860094ED69 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		FA4B112E21448C860094ED69 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		FA82EF15214699CD00694C51 /* DataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DataModel.xcdatamodel; sourceTree = "<group>"; };
 		FA82EF3821479E4B00694C51 /* CategoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryViewController.swift; sourceTree = "<group>"; };
+		FAC78DD8214A455C0066657D /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
+		FAC78DDA214A459F0066657D /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,7 +83,8 @@
 		FA0D8C1D2145D40D00277C7E /* Modal */ = {
 			isa = PBXGroup;
 			children = (
-				FA82EF14214699CD00694C51 /* DataModel.xcdatamodeld */,
+				FAC78DDA214A459F0066657D /* Category.swift */,
+				FAC78DD8214A455C0066657D /* Item.swift */,
 			);
 			path = Modal;
 			sourceTree = "<group>";
@@ -200,16 +203,12 @@
 			buildActionMask = 2147483647;
 			files = (
 			);
-			inputFileListPaths = (
-			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-Todoey/Pods-Todoey-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Realm/Realm.framework",
 				"${BUILT_PRODUCTS_DIR}/RealmSwift/RealmSwift.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-			);
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Realm.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RealmSwift.framework",
@@ -224,15 +223,11 @@
 			buildActionMask = 2147483647;
 			files = (
 			);
-			inputFileListPaths = (
-			);
 			inputPaths = (
 				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
 				"${PODS_ROOT}/Manifest.lock",
 			);
 			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
 			outputPaths = (
 				"$(DERIVED_FILE_DIR)/Pods-Todoey-checkManifestLockResult.txt",
 			);
@@ -248,10 +243,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FAC78DD9214A455C0066657D /* Item.swift in Sources */,
 				FA82EF3921479E4B00694C51 /* CategoryViewController.swift in Sources */,
 				FA4B112521448C850094ED69 /* TodoListViewController.swift in Sources */,
-				FA82EF16214699CD00694C51 /* DataModel.xcdatamodeld in Sources */,
 				FA4B112321448C850094ED69 /* AppDelegate.swift in Sources */,
+				FAC78DDB214A459F0066657D /* Category.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -451,19 +447,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCVersionGroup section */
-		FA82EF14214699CD00694C51 /* DataModel.xcdatamodeld */ = {
-			isa = XCVersionGroup;
-			children = (
-				FA82EF15214699CD00694C51 /* DataModel.xcdatamodel */,
-			);
-			currentVersion = FA82EF15214699CD00694C51 /* DataModel.xcdatamodel */;
-			path = DataModel.xcdatamodeld;
-			sourceTree = "<group>";
-			versionGroupType = wrapper.xcdatamodel;
-		};
-/* End XCVersionGroup section */
 	};
 	rootObject = FA4B111721448C850094ED69 /* Project object */;
 }
