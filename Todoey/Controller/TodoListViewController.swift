@@ -9,7 +9,7 @@
 import UIKit
 import RealmSwift
 
-class TodoListViewController: UITableViewController {
+class TodoListViewController: SwipeTableViewController {
 
     let realm = try! Realm()
     var items: Results<Item>?
@@ -20,31 +20,28 @@ class TodoListViewController: UITableViewController {
         }
     }
     
+    
     override func viewDidLoad() {
-        
         super.viewDidLoad()
-        
-        print(FileManager.default.urls(for: .documentDirectory, in: .userDomainMask))
-        
+        // print(FileManager.default.urls(for: .documentDirectory, in: .userDomainMask))
     }
 
     //MARK: - Tableview datasource methods
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        
         return items?.count ?? 1
     }
     
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell = tableView.dequeueReusableCell(withIdentifier: "ToDoItemCell", for: indexPath)
+        let cell = super.tableView(tableView, cellForRowAt: indexPath)
         
         if let items = items {
-            
             let item = items[indexPath.row]
             cell.textLabel?.text = item.title
             cell.accessoryType = item.done ? .checkmark : .none
         }
-    
+        
         return cell
     } 
     
@@ -52,10 +49,8 @@ class TodoListViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         if let item = items?[indexPath.row] {
-            
             do {
                 try realm.write {
-                    // realm.delete(item)
                     item.done = !item.done
                 }
             } catch {
@@ -70,14 +65,11 @@ class TodoListViewController: UITableViewController {
     @IBAction func addItemPressed(_ sender: Any) {
         
         var textField = UITextField()
-        
         let alert = UIAlertController(title: "Add New Todoey Item", message: nil, preferredStyle: .alert)
-        
-        let action = UIAlertAction(title: "Add New Item", style: .default) { (action) in
-            
+        let action = UIAlertAction(title: "Add New Item", style: .default) {
+            (action) in
             // what happens after user add a new item
             if let currentCategory = self.selectedCategory {
-                
                 do {
                     try self.realm.write() {
                         let newItem = Item()
@@ -86,22 +78,21 @@ class TodoListViewController: UITableViewController {
                         currentCategory.items.append(newItem)
                     }
                 } catch {
-                        print("Error saving to realm, \(error)")
+                    print("Error saving to realm, \(error)")
                 }
             }
             
             self.tableView.reloadData()
         }
         
-        alert.addTextField { (alertTextField) in
-            
+        alert.addTextField {
+        (alertTextField) in
             alertTextField.placeholder = "Create new item"
             textField = alertTextField
         }
-        
+
         alert.addAction(action)
         present(alert, animated: true, completion: nil)
-        
     }
     
     // MARK: - Custom Functions
@@ -112,7 +103,26 @@ class TodoListViewController: UITableViewController {
         tableView.reloadData()
     }
     
+    
+    override func updateModel(at indexPath: IndexPath) {
+        super.updateModel(at: indexPath)
+        
+        if let selectedItem = items?[indexPath.row] {
+            do {
+                try realm.write {
+                    realm.delete(selectedItem)
+                }
+            } catch {
+                print("Error deleting item, \(error)")
+            }
+        }
+    }
+    
+// End of class
 }
+
+
+
 
 // MARK: - Search bar methods
 extension TodoListViewController: UISearchBarDelegate {
@@ -137,6 +147,6 @@ extension TodoListViewController: UISearchBarDelegate {
             }
         }
     }
-
+// End of extension
 }
 
